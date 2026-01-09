@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vintage Newspaper Photobooth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="photobooth">
+
+  <div class="frame-wrapper">
+    <video id="video" autoplay playsinline></video>
+
+    <!-- AREA FOTO (GRID PUTIH) -->
+    <div class="photo-area"></div>
+
+    <!-- FRAME -->
+    <img src="frame.png" class="frame-img" id="frame">
+
+    <!-- TIMER -->
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <div class="controls">
+    <button id="capture">Capture</button>
+    <button id="retake">Retake</button>
+    <button id="download">Download</button>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
