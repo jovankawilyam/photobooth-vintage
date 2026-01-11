@@ -9,12 +9,19 @@
 <body>
 
 <div class="photobooth">
+  <div class="instructions">
+    <p>👉 Drag & resize area foto sesuai keinginanmu!</p>
+  </div>
 
   <div class="frame-wrapper">
+    <!-- VIDEO -->
     <video id="video" autoplay playsinline></video>
 
-    <!-- AREA FOTO (GRID PUTIH) -->
-    <div class="photo-area"></div>
+    <!-- AREA FOTO (DAPAT DI-DRAG & RESIZE) -->
+    <div class="photo-area">
+      <div class="resize-handle"></div>
+      <div class="area-label">Area Foto</div>
+    </div>
 
     <!-- FRAME -->
     <img src="frame.png" class="frame-img" id="frame">
@@ -23,14 +30,21 @@
     <div class="countdown" id="countdown"></div>
   </div>
 
+  <!-- KONTROL -->
   <div class="controls">
-    <button id="capture">Capture</button>
-    <button id="retake">Retake</button>
-    <button id="download">Download</button>
+    <button id="capture">Ambil Foto</button>
+    <button id="retake">Ulangi</button>
+    <button id="download">Unduh</button>
   </div>
 
+  <!-- CANVAS TERSEMBUNYI -->
   <canvas id="canvas"></canvas>
 
+  <!-- PREVIEW HASIL -->
+  <div class="preview-container" id="previewContainer">
+    <h3>Hasil Foto:</h3>
+    <img id="preview" src="" alt="Preview">
+  </div>
 </div>
 
 <script src="script.js"></script>
