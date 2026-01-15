@@ -2,50 +2,35 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <title>Vintage Photobooth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vintage Newspaper Photobooth</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="vintage">
 
-<div class="photobooth">
-  <div class="instructions">
-    <p>👉 Drag & resize area foto sesuai keinginanmu!</p>
-  </div>
+<h1>Vintage Newspaper Photobooth</h1>
 
-  <div class="frame-wrapper">
-    <!-- VIDEO -->
-    <video id="video" autoplay playsinline></video>
-
-    <!-- AREA FOTO (DAPAT DI-DRAG & RESIZE) -->
-    <div class="photo-area">
-      <div class="resize-handle"></div>
-      <div class="area-label">Area Foto</div>
-    </div>
-
-    <!-- FRAME -->
-    <img src="frame.png" class="frame-img" id="frame">
-
-    <!-- TIMER -->
-    <div class="countdown" id="countdown"></div>
-  </div>
-
-  <!-- KONTROL -->
-  <div class="controls">
-    <button id="capture">Ambil Foto</button>
-    <button id="retake">Ulangi</button>
-    <button id="download">Unduh</button>
-  </div>
-
-  <!-- CANVAS TERSEMBUNYI -->
-  <canvas id="canvas"></canvas>
-
-  <!-- PREVIEW HASIL -->
-  <div class="preview-container" id="previewContainer">
-    <h3>Hasil Foto:</h3>
-    <img id="preview" src="" alt="Preview">
-  </div>
+<div class="camera-wrapper">
+  <video id="video" autoplay playsinline></video>
+  <div id="countdown" class="countdown hidden"></div>
 </div>
+
+<div class="controls">
+  <div class="timer">
+    <label><input type="radio" name="timer" value="3" checked>3s</label>
+    <label><input type="radio" name="timer" value="5">5s</label>
+    <label><input type="radio" name="timer" value="10">10s</label>
+  </div>
+
+  <button id="takePhoto">Take Photo</button>
+
+  <label class="upload-btn">
+    Upload Foto
+    <input type="file" id="uploadPhoto" accept="image/*" hidden>
+  </label>
+</div>
+
+<canvas id="captureCanvas" hidden></canvas>
 
 <script src="script.js"></script>
 </body>
