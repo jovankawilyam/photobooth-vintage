@@ -1,9 +1,31 @@
+:root {
+  --photo-ratio: 1029 / 845;
+  --frame-ratio: 1587 / 2245;
+  --page-padding: clamp(12px, 2.4vw, 24px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
 body.vintage {
   background: #f4efe6;
   font-family: Georgia, "Times New Roman", serif;
   text-align: center;
   color: #2b2b2b;
-  padding: 20px;
+  min-height: 100dvh;
+  margin: 0;
+  padding: var(--page-padding);
+}
+
+h1 {
+  font-size: clamp(1.35rem, 2.8vw, 2rem);
+  margin: 0 0 clamp(12px, 2vh, 20px);
 }
 
 .status {
@@ -19,8 +41,13 @@ body.vintage {
 
 /* ================= CAMERA ================= */
 .camera-wrapper {
-  width: min(90vw, 420px);
-  aspect-ratio: 3 / 4;
+  width: min(
+    calc(100vw - (var(--page-padding) * 2)),
+    calc((100dvh - 215px) * 1029 / 845),
+    1080px
+  );
+  /* Match the photo opening in frame/frame.png so the captured crop is predictable. */
+  aspect-ratio: var(--photo-ratio);
   margin: 0 auto;
   position: relative;
   background: #000;
@@ -49,7 +76,7 @@ body.vintage {
 
 /* ================= CONTROLS ================= */
 .controls {
-  margin-top: 15px;
+  margin-top: clamp(10px, 2vh, 15px);
 }
 
 button, .upload-btn {
@@ -60,6 +87,7 @@ button, .upload-btn {
   margin: 6px;
   cursor: pointer;
   font-family: inherit;
+  font-size: 1rem;
 }
 
 button:hover, .upload-btn:hover {
@@ -68,7 +96,12 @@ button:hover, .upload-btn:hover {
 
 /* ================= RESULT ================= */
 .frame-container {
-  width: min(95vw, 520px);
+  width: min(
+    calc(100vw - (var(--page-padding) * 2)),
+    calc((100dvh - 175px) * 1587 / 2245),
+    680px
+  );
+  aspect-ratio: var(--frame-ratio);
   margin: 0 auto;
 }
 
@@ -76,9 +109,68 @@ button:hover, .upload-btn:hover {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: var(--frame-ratio);
 }
 
 button:disabled {
   cursor: not-allowed;
   opacity: .6;
+}
+
+@media (max-width: 560px) {
+  body.vintage {
+    padding: 12px 0 16px;
+  }
+
+  h1,
+  .status,
+  .controls {
+    padding-inline: 12px;
+  }
+
+  .camera-wrapper {
+    width: 100vw;
+  }
+
+  .frame-container {
+    width: min(100vw, calc((100dvh - 165px) * 1587 / 2245));
+  }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  body.vintage {
+    padding: 8px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .status {
+    font-size: .9rem;
+    margin: 6px auto;
+  }
+
+  .controls {
+    margin-top: 4px;
+  }
+
+  .timer {
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  button, .upload-btn {
+    padding: 8px 12px;
+    margin: 4px;
+  }
+
+  .camera-wrapper {
+    width: min(calc(100vw - 16px), calc((100dvh - 124px) * 1029 / 845), 1080px);
+  }
+
+  .frame-container {
+    width: min(calc(100vw - 16px), calc((100dvh - 105px) * 1587 / 2245), 680px);
+  }
 }
