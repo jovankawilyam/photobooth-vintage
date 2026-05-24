@@ -2,24 +2,37 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Result</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasil Foto - Vintage Photobooth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#efe5d2">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="vintage">
+<body class="vintage result-page">
 
-<h1>Hasil Foto</h1>
+<header class="site-header compact-header">
+  <p class="eyebrow">Portrait Studio / Vintage Edition</p>
+  <h1>Hasil <span>Fotomu</span></h1>
+</header>
 
-<div class="frame-container">
-  <canvas id="resultCanvas" aria-label="Hasil foto dengan frame vintage"></canvas>
-</div>
-<p id="resultStatus" class="status" role="status">Menyiapkan hasil foto...</p>
+<main class="result-layout">
+  <section class="result-preview panel" aria-label="Pratinjau hasil foto">
+    <div class="frame-container">
+      <canvas id="resultCanvas" aria-label="Hasil foto dengan frame vintage"></canvas>
+    </div>
+  </section>
 
-<div class="controls">
-  <button id="retakeBtn">Foto Ulang</button>
-  <button id="downloadBtn">Download Foto</button>
-</div>
+  <aside class="result-actions panel">
+    <p class="step-label">02 / Selesai</p>
+    <h2>Simpan momenmu</h2>
+    <p id="resultStatus" class="status" role="status">Menyiapkan hasil foto...</p>
+    <div class="actions">
+      <button id="downloadBtn" class="primary-action">Download Foto</button>
+      <button id="retakeBtn" class="secondary-action">Foto Ulang</button>
+    </div>
+    <p class="helper-text">File akan disimpan dalam format PNG berkualitas tinggi.</p>
+  </aside>
+</main>
 
 <script src="script.js"></script>
 </body>

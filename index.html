@@ -3,34 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title>Vintage Photobooth</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#efe5d2">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="vintage">
+<body class="vintage capture-page">
 
-<h1>Vintage Newspaper Photobooth</h1>
+<header class="site-header">
+  <p class="eyebrow">Portrait Studio / Vintage Edition</p>
+  <h1>Vintage <span>Photobooth</span></h1>
+  <p class="subtitle">Buat potret bergaya koran klasik dengan sentuhan modern.</p>
+</header>
 
-<div class="camera-wrapper">
-  <video id="video" autoplay playsinline></video>
-  <div id="countdown" class="countdown hidden"></div>
-</div>
-<p id="cameraStatus" class="status" role="status">Menyiapkan kamera...</p>
+<main class="studio-layout">
+  <section class="camera-panel panel" aria-label="Pratinjau kamera">
+    <div class="panel-heading">
+      <span class="badge">Live Preview</span>
+      <p>Pastikan wajah berada di tengah frame.</p>
+    </div>
+    <div class="camera-wrapper">
+      <video id="video" autoplay playsinline></video>
+      <div id="countdown" class="countdown hidden"></div>
+    </div>
+    <p id="cameraStatus" class="status" role="status">Menyiapkan kamera...</p>
+  </section>
 
-<div class="controls">
-  <div class="timer">
-    <label><input type="radio" name="timer" value="3" checked>3s</label>
-    <label><input type="radio" name="timer" value="5">5s</label>
-    <label><input type="radio" name="timer" value="10">10s</label>
-  </div>
+  <aside class="control-panel panel" aria-label="Pengaturan foto">
+    <p class="step-label">01 / Persiapkan foto</p>
+    <h2>Atur gayamu</h2>
+    <p class="control-copy">Pilih karakter warna dan jeda sebelum kamera mengambil foto.</p>
 
-  <button id="takePhoto" disabled>Ambil Foto</button>
+    <div class="field effect-picker">
+      <label for="photoEffect">Efek foto</label>
+      <select id="photoEffect">
+        <option value="normal">Normal</option>
+        <option value="monochrome">Monokrom</option>
+        <option value="sepia">Sepia</option>
+        <option value="warm">Hangat</option>
+        <option value="contrast">Kontras</option>
+      </select>
+    </div>
 
-  <label class="upload-btn">
-    Upload Foto
-    <input type="file" id="uploadPhoto" accept="image/*" hidden>
-  </label>
-</div>
+    <fieldset class="timer field">
+      <legend>Timer</legend>
+      <div class="timer-options">
+        <label><input type="radio" name="timer" value="3" checked><span>3s</span></label>
+        <label><input type="radio" name="timer" value="5"><span>5s</span></label>
+        <label><input type="radio" name="timer" value="10"><span>10s</span></label>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button id="takePhoto" class="primary-action" disabled>Ambil Foto</button>
+      <label class="upload-btn secondary-action">
+        Upload Foto
+        <input class="file-input" type="file" id="uploadPhoto" accept="image/*">
+      </label>
+    </div>
+    <p class="helper-text">Upload tersedia jika kamera tidak dapat digunakan.</p>
+  </aside>
+</main>
 
 <canvas id="captureCanvas" hidden></canvas>
 

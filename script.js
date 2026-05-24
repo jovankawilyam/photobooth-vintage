@@ -8,6 +8,13 @@ const FRAME_CONFIG = {
   }
 };
 const MAX_STORED_PHOTO_EDGE = 1600;
+const PHOTO_EFFECTS = {
+  normal: "none",
+  monochrome: "grayscale(100%)",
+  sepia: "sepia(85%) contrast(1.06)",
+  warm: "sepia(28%) saturate(1.3) contrast(1.04)",
+  contrast: "contrast(1.35) saturate(0.9)"
+};
 
 /* ================= CAMERA ================= */
 const video = document.getElementById("video");
@@ -16,6 +23,7 @@ const ctx = canvas?.getContext("2d");
 const countdownEl = document.getElementById("countdown");
 const cameraStatus = document.getElementById("cameraStatus");
 const takePhotoBtn = document.getElementById("takePhoto");
+const photoEffect = document.getElementById("photoEffect");
 let activeStream;
 let isCountingDown = false;
 
@@ -24,6 +32,19 @@ function setStatus(element, message, isError = false) {
   element.textContent = message;
   element.classList.toggle("error", isError);
 }
+
+function getPhotoFilter() {
+  return PHOTO_EFFECTS[photoEffect?.value] || PHOTO_EFFECTS.normal;
+}
+
+function updatePhotoPreview() {
+  if (video) {
+    video.style.filter = getPhotoFilter();
+  }
+}
+
+photoEffect?.addEventListener("change", updatePhotoPreview);
+updatePhotoPreview();
 
 async function initCamera() {
   if (!navigator.mediaDevices?.getUserMedia || !window.isSecureContext) {
@@ -94,7 +115,9 @@ function createStoredPhoto(source, sourceWidth, sourceHeight) {
   const scale = Math.min(1, MAX_STORED_PHOTO_EDGE / Math.max(sourceWidth, sourceHeight));
   canvas.width = Math.round(sourceWidth * scale);
   canvas.height = Math.round(sourceHeight * scale);
+  ctx.filter = getPhotoFilter();
   ctx.drawImage(source, 0, 0, canvas.width, canvas.height);
+  ctx.filter = "none";
   return canvas.toDataURL("image/jpeg", 0.9);
 }
 
