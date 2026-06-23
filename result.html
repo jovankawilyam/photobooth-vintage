@@ -17,8 +17,15 @@
 
 <main class="result-layout">
   <section class="result-preview panel" aria-label="Pratinjau hasil foto">
-    <div class="frame-container">
-      <canvas id="resultCanvas" aria-label="Hasil foto dengan frame vintage"></canvas>
+    <div class="frames-wrapper">
+      <div class="frame-container photo-frame">
+        <p class="frame-label">Foto Statis</p>
+        <canvas id="resultCanvas" aria-label="Hasil foto dengan frame vintage"></canvas>
+      </div>
+      <div id="gifPanel" class="frame-container gif-frame hidden" aria-live="polite">
+        <p class="frame-label">Animasi</p>
+        <canvas id="gifCanvas" aria-label="Hasil animasi burst dengan frame vintage"></canvas>
+      </div>
     </div>
   </section>
 
@@ -28,9 +35,11 @@
     <p id="resultStatus" class="status" role="status">Menyiapkan hasil foto...</p>
     <div class="actions">
       <button id="downloadBtn" class="primary-action">Download Foto</button>
+      <button id="showGifBtn" class="secondary-action" hidden>Lihat Animasi</button>
+      <button id="downloadGifBtn" class="primary-action" hidden>Download Video</button>
       <button id="retakeBtn" class="secondary-action">Foto Ulang</button>
     </div>
-    <p class="helper-text">File akan disimpan dalam format PNG berkualitas tinggi.</p>
+    <p class="helper-text">Foto disimpan sebagai PNG. Animasi video tersedia setelah kamu mengambil foto dari kamera.</p>
   </aside>
 </main>
 
